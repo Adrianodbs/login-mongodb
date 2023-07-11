@@ -1,7 +1,9 @@
+import LayoutAdmin from '@/components/LayoutAdmin'
+
 export default function Home() {
   return (
-    <div>
-      <h1>Teste</h1>
-    </div>
+    <LayoutAdmin>
+      <main className="min-h-screen flex justify-center pt-6">Home</main>
+    </LayoutAdmin>
   )
 }
