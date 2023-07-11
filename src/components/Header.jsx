@@ -21,6 +21,7 @@ export default function Header() {
       <Button
         text="Sair"
         className="bg-red-600 text-white rounded px-2 cursor-pointer"
+        onClick={() => signOut()}
       />
     </div>
   )

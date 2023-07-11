@@ -2,9 +2,10 @@
 import Button from '@/components/Button'
 import Input from '@/components/Input'
 import { Form, Formik } from 'formik'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as Yup from 'yup'
 
 export default function Register() {
@@ -12,6 +13,19 @@ export default function Register() {
   const [isFormSubmitting, setIsFormSubmitting] = useState(false)
 
   const router = useRouter()
+
+  const { status } = useSession()
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      router.push('/')
+    }
+  }, [status, router])
+
+  if (status !== 'unauthenticated') {
+    return null
+  }
+
   const initialValues = {
     name: '',
     email: '',
